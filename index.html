@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<body>
+    <h1>Trouble Shooting</h1>
+    <script>
+        const getData = async()=>{
+            const response = await fetch('http://localhost:3000/data')
+                .then((res)=>res.json());
+            console.log(response);
+            
+            const results = response.results;
+            const bodyEl = document.querySelector("body");
+            results.map((result)=>{
+                const aEl = document.createElement("a");
+                aEl.setAttribute("href", result.url)
+                const h2El = document.createElement("h2");
+                h2El.innerText = result.properties.Name.title[0].plain_text;
+                aEl.appendChild(h2El);
+                bodyEl.appendChild(aEl);
+            })
+            
+        }
+
+        window.onload = () => {
+            getData();
+        };
+    </script>
+</body>
+</html>
