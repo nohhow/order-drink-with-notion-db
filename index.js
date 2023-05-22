@@ -8,7 +8,7 @@ process.env.TZ = "Asia/Seoul";
 dotenv.config();
 const app = express();
 const __dirname = path.resolve();
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 8080;
 
 app.use(express.static(path.join(__dirname, "public")));
 
