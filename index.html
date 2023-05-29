@@ -126,7 +126,8 @@
     </div>
     <script>
       const getData = async () => {
-        const response = await fetch("http://localhost:3000/data").then((res) =>
+        const domain = window.location.protocol + "//" + window.location.host;
+        const response = await fetch(`${domain}/data`).then((res) =>
           res.json()
         );
         console.log(response);
@@ -170,8 +171,14 @@
         .getElementById("submitButton")
         .addEventListener("click", function () {
           var inputValue = document.getElementById("myInput").value;
-          var url = "/submit?inputValue=" + encodeURIComponent(inputValue);
-          window.location.href = url;
+
+          var xhr = new XMLHttpRequest();
+          xhr.open(
+            "GET",
+            "/submit?inputValue=" + encodeURIComponent(inputValue),
+            true
+          );
+          xhr.send();
         });
 
       window.onload = () => {
