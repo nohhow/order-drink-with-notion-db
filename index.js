@@ -79,7 +79,7 @@ async function addNameToOrderer(inputName) {
 
     // 오늘 날짜 데이터의 첫 번째 항목 가져오기
     const pageId = response.results[0].id;
-    console.log(...response.results[0].properties.Orderer.multi_select)
+    
     // 이름 추가
     await notion.pages.update({
       page_id: pageId,
@@ -95,7 +95,7 @@ async function addNameToOrderer(inputName) {
       },
     });
 
-    console.log("이름 추가 완료");
+    console.log("["+ today +"]"+"이름 추가 완료");
   } catch (error) {
     console.error("이름 추가 오류:", error);
   }
